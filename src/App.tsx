@@ -30,7 +30,6 @@ import SelectProjects from './features/projects/SelectProjects';
 import ProjectList2 from './features/projects/ProjectList2';
 import SelectedProjectsList from './features/projects/SelectedProjectsList';
 
-
 function App() {
   return (
     <StoreContext.Provider value={store}>

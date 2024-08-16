@@ -4,12 +4,13 @@ import NewsList from '../../features/news/NewsList';
 import ContactUs from './ContactUs';
 import AboutCompany from '../../features/AboutCompanyUs/AboutCompany';
 import ProjectList2 from '../../features/projects/ProjectList2';
+import SelectedProjectList from '../../features/projects/SelectedProjectsList';
 
 const MainPage = () => {
   return (
     <div>
       <section id="projects">
-        <ProjectList />
+        <SelectedProjectList />
       </section>
       <section id="aboutus">
         <AboutCompany />

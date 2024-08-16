@@ -4,25 +4,33 @@ import { useStore } from "../../app/stores/store";
 
 const SelectedProjectList = () => {
   const { projectStore } = useStore();
+  const [displayProject,setdisplayProjec]=useState<any>();
   const { selectedProjects, loadSelectedProjects, loading, error } = projectStore; 
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   loadSelectedProjects();
+  // }, [loadSelectedProjects]);
+  // console.log("justDebug",displayProject);
+  console.log("try 2");
+  const getResponse = async()=>{
+    await loadSelectedProjects().then((response)=>{
+      setdisplayProjec(response);
+    })
+  }
   useEffect(() => {
-    loadSelectedProjects();
-  }, [loadSelectedProjects]);
+    getResponse();
+    // console.log("Selected projects updated:", selectedProjects); // Debug log
+    // if (selectedProjects.length > 0) {
+    //   const interval = setInterval(() => {
+    //     setCurrentIndex((prevIndex) => (prevIndex + 1) % selectedProjects.length);
+    //   }, 4500); 
 
-  useEffect(() => {
-    console.log("Selected projects updated:", selectedProjects); // Debug log
-    if (selectedProjects.length > 0) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % selectedProjects.length);
-      }, 4500); 
-
-      return () => clearInterval(interval);
-    }
-  }, [selectedProjects]);
-
+    //   return () => clearInterval(interval);
+    // }
+  }, []);
+  console.log({"response":displayProject});
   const handleDotClick = (index: number) => {
     setCurrentIndex(index);
   };
@@ -34,25 +42,25 @@ const SelectedProjectList = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  if (!selectedProjects.length) {
+  if (displayProject && !displayProject.$values.length) {
     return <div>No projects selected</div>;
   }
 
   return (
     <div className="project-carousel">
-      {selectedProjects.length > 0 && (
+      {displayProject && displayProject.$values.length > 0 && (
         <div
           className="project-slide"
-          style={{ backgroundImage: `url(${selectedProjects[currentIndex].image})` }}
-          onClick={() => handleProjectClick(selectedProjects[currentIndex].id)}
+          style={{ backgroundImage: `url(${displayProject.$values[currentIndex].image})` }}
+          onClick={() => handleProjectClick(displayProject.$values[currentIndex].id)}
         >
           <div className="project-title">
-            <p>{selectedProjects[currentIndex].title}</p>
+            <p>{displayProject.$values[currentIndex].title}</p>
           </div>
         </div>
       )}
       <div className="carousel-dots">
-        {selectedProjects.map((_, index) => (
+        {displayProject && displayProject.$values.map((_:any, index:any) => (
           <span
             key={index}
             className={`dot ${currentIndex === index ? 'active' : ''}`}
