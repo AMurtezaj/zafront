@@ -1,0 +1,1645 @@
+/* General Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    scroll-behavior: smooth;
+    background-color: white; 
+    font-family: Arial, sans-serif;
+  }
+  
+  section {
+    min-height: 100vh; /* Minimum height of full screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white; /* Ensure each section has a white background */
+    padding: 2rem 1rem;
+  }
+  
+  #projects, #news, #aboutus, #contact, #projects2 {
+    background-color: white;
+  }
+  
+  .project-carousel {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px); /* Full screen height minus the navbar */
+    overflow: hidden;
+    transform: 0.3s ease;
+}
+
+.project-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    animation: zoomOut 4.5s ease-in-out infinite; /* Apply zoom-out animation */
+}
+
+/* Ensuring the image scales properly on different screen sizes */
+@media (max-width: 768px) {
+    .project-carousel {
+        height: calc(50vh - 80px); /* Adjust height for smaller screens */
+    }
+
+    .project-slide {
+        animation: zoomOutMobile 4.5s ease-in-out infinite;
+    }
+
+    @keyframes zoomOutMobile {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(1.05); /* Slightly smaller zoom-out for mobile */
+        }
+    }
+}
+
+@keyframes zoomOut {
+    0% {
+        transform: scale(1); /* Start at normal size */
+    }
+    100% {
+        transform: scale(1.1); /* Zoom out to 1.1 times the original size */
+    }
+}
+
+.project-title {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px; 
+    position: relative;
+    z-index: 2;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: black;
+}
+
+/* Adjust dots for smaller screens */
+@media (max-width: 768px) {
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+  /* General Navbar Styles */
+.navbar {
+  width: 100%;
+  background-color: #fff; /* Background color of navbar */
+  padding: 1rem 2rem; /* Padding to space out content */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: fixed;
+  z-index: 10; /* Ensure the navbar stays on top */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the navbar content */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-toggler {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none; /* Initially hidden, will show on smaller screens */
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 30px;
+  height: 3px;
+  background-color: #333; /* Color of the burger icon */
+  position: relative;
+  transition: background 0.3s;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  position: absolute;
+  left: 0;
+  transition: all 0.3s;
+}
+
+.navbar-toggler-icon::before {
+  top: -10px;
+}
+
+.navbar-toggler-icon::after {
+  top: 10px;
+}
+
+.navbar-toggler.active .navbar-toggler-icon {
+  background-color: transparent;
+}
+
+.navbar-toggler.active .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.navbar-toggler.active .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.navbar-brand-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-img {
+  max-height: 35px; /* Adjust this value based on your logo size */
+  object-fit: contain;
+}
+
+/* Navbar Menu */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar-menu-active {
+  display: column;
+}
+
+.navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-item {
+  margin-left: 20px;
+  display: flex; /* Ensure flexbox layout */
+  align-items: center; /* Center items vertically if needed */
+}
+
+.nav-item .language-switcher-button {
+  font-size: 1.8rem; 
+  padding: 5px 10px; 
+  border-radius: 1px; 
+  line-height: 1;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #007bff; /* Change to your brand color */
+}
+
+/* Navbar Close Button for Mobile */
+.navbar-close {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-toggler {
+    display: block; /* Show burger icon on smaller screens */
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar-menu-active {
+    transform: translateY(0);
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-item {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+  }
+
+  .nav-link {
+    font-size: 1.2rem; /* Increase size for better touch targets */
+  }
+
+  .navbar-close {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem; /* Reduce padding on very small screens */
+  }
+
+  .logo-img {
+    max-height: 40px; /* Adjust logo size on small screens */
+  }
+
+  .navbar-toggler {
+    font-size: 1.2rem;
+  }
+}
+
+/* Responsive Navbar with Menu Button */
+.navbar.active .navbar-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2rem;
+}
+
+.navbar-menu {
+  display: none; /* Hidden by default, shown when active */
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-menu-active {
+  display: flex;
+}
+
+.navbar-nav {
+  width: 100%;
+}
+
+.nav-item {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.nav-link {
+  width: 100%;
+  display: block;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #f8f9fa;
+}
+
+.navbar-toggler {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+
+.navbar-toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  display: block;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+  top: -10px;
+}
+
+.navbar-toggler-icon::after {
+  top: 10px;
+}
+
+.navbar-toggler.active .navbar-toggler-icon {
+  background-color: transparent;
+}
+
+.navbar-toggler.active .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.navbar-toggler.active .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.navbar-close {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.navbar-close svg {
+  width: 24px;
+  height: 24px;
+  color: #333;
+}
+
+.navbar-menu-active .navbar-close {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar-menu-active {
+    transform: translateY(0);
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .navbar-toggler-icon {
+    width: 24px;
+    height: 2px;
+    background-color: #333;
+  }
+
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background-color: #333;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s;
+  }
+
+  .navbar-toggler-icon::before {
+    top: -8px;
+  }
+
+  .navbar-toggler-icon::after {
+    top: 8px;
+  }
+
+  .navbar-toggler.active .navbar-toggler-icon {
+    background-color: transparent;
+  }
+
+  .navbar-toggler.active .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .navbar-toggler.active .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+}
+
+  
+  /* About Company Styles */
+  .about-company-section {
+    background-color: white;
+    padding: 2rem 0;
+  }
+  
+  .text-muted{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .text-muted1{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-company-text{
+    font-size: 1rem;
+    color: #6c757d;
+    text-align: center;
+  }
+
+  
+  
+  .about-company-section .btn {
+    margin-top: 2rem;
+  }
+  
+  /* About Us Styles */
+  .about-us-section {
+    background-color: white;
+    padding: 5rem 0;
+  }
+  
+  .about-us-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .about-us-section p {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+    }
+  
+    .navbar-brand-container {
+      position: static;
+      transform: none;
+    }
+  
+    .navbar-toggler {
+      margin-left: auto;
+    }
+
+    .navbar-nav {
+      flex-direction: column;
+    }
+  
+    .nav-item {
+      width: 100%;
+    }
+  
+    .project-carousel {
+      height: 300px; /* Adjust carousel height for smaller screens */
+    }
+  
+    .project-title {
+      font-size: 1rem;
+      margin-bottom: 20px; 
+    }
+  
+    .about-company-section,
+    .about-us-section {
+      padding: 2rem 1rem;
+    }
+  
+    .about-company-section h2,
+    .about-us-section h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 0.5rem 0.5rem;
+    }
+  
+    .navbar-toggler {
+      margin-right: 1rem;
+    }
+  
+    .project-carousel {
+      height: 200px; /* Adjust carousel height for smaller screens */
+    }
+  
+    .project-title {
+      font-size: 0.10rem;
+      padding: 5px 10px;
+      margin-bottom: 20px; /* Space above the dots for smaller screens */
+    }
+  
+    .about-company-section,
+    .about-us-section {
+      padding: 1rem 0.5rem;
+    }
+  
+    .about-company-section h2,
+    .about-us-section h2 {
+      font-size: 1.25rem;
+    }
+  }
+  
+  /* Management Pages Styles */
+  .management-container {
+    padding: 2rem;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 100px); /* Adjust the height to fit within the viewport */
+  }
+  
+  .management-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card {
+    margin-bottom: 15rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card img {
+    max-height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .management-container {
+      padding: 1rem;
+    }
+  
+    .management-title {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .management-container {
+      padding: 0.5rem;
+    }
+  
+    .management-title {
+      font-size: 1.25rem;
+    }
+  }
+  
+  .footer .btn {
+    margin: 0.2rem;
+  }
+  
+  .footer .btn i {
+    font-size: 1.5rem;
+  }
+  
+  .footer .btn:focus,
+  .footer .btn:active {
+    outline: none;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Specific styles for ManageProjectDetails */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+  
+  /* AddTheNews.css */
+  
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin-top: 50px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .textarea-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+    resize: vertical;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .submit-btn:disabled {
+    background-color: #007bff;
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .meet-our-team-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.833);
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .meet-our-team-btn:hover {
+    background-color:rgba(0, 0, 0, 0.833);
+    color: white;
+  }
+
+.team-container {
+  padding: 2rem;
+  background-color: white;
+}
+
+.team-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.team-row {
+  display: grid;
+  gap: 20px; /* Adjust spacing between items */
+  justify-items: center;
+}
+
+.top-row {
+  grid-template-columns: repeat(2, 1fr); /* Two columns for the top row */
+  margin-bottom: 40px; /* Space between top row and bottom grid */
+}
+
+.bottom-row {
+  grid-template-columns: repeat(3, 1fr); /* Three columns for the bottom row */
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .bottom-row {
+    grid-template-columns: repeat(3, 1fr); /* Three columns for tablets */
+  }
+}
+
+@media (max-width: 900px) {
+  .top-row {
+    grid-template-columns: 1fr; /* Single column for small tablets */
+    margin-bottom: 20px; /* Reduced space for smaller devices */
+  }
+
+  .bottom-row {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for small devices */
+  }
+}
+
+@media (max-width: 600px) {
+  .team-title {
+    font-size: 1.5rem; /* Smaller title font size for mobile */
+  }
+
+  .team-card {
+    max-width: 100%; /* Full width for cards on very small screens */
+  }
+}
+
+.team-card {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1.2;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+}
+
+.team-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1.2;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px 10px 0 0;
+}
+
+.team-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.team-card:hover .team-body {
+  opacity: 1;
+}
+
+.team-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.team-title,
+.team-position {
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+  /* button of AboutUs*/
+  .btn-custom {
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .btn-custom:hover {
+    background-color: #ffffff; /* White background on hover */
+    color: #000000; /* Black text on hover */
+    border: 2px solid #000000; /* Add black border on hover */
+  }
+  
+  .btn-custom:focus {
+    outline: none;
+  }
+
+  /* Admin Dashboard */
+
+  .container {
+    max-width: 1200px;
+  }
+  
+  .card {
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    color: #666;
+  }
+  .admin-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .admin-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  /* Login Form Styles */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.login-form label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.login-form .form-control {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.login-form .btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.login-form .btn:hover {
+  background-color: #0056b3;
+}
+
+.login-form .btn-block {
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .login-container {
+    margin: 20px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .login-form .btn {
+    padding: 10px;
+  }
+}
+
+/* CODE FOR PROJECT DETAILS FORM */
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.project-details-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.project-details-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.project-details-form input[type="text"],
+.project-details-form input[type="file"],
+.project-details-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.project-details-form .btn-primary {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.project-details-form .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.icon-container .cursor-pointer {
+  margin-right: 10px; /* Space between icons */
+}
+
+/* Optionally, you can control spacing with a specific class */
+.icon-spacing {
+  margin-right: 10px; /* Add space between icons */
+}
+
+.management-container {
+  padding: 2rem;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: calc(100vh - 200px); /* Adjust to fit below the navbar and above the footer */
+  margin-top: 80px; /* Adjust according to your navbar height */
+}
+
+/* Title styling */
+.management-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Card styling */
+.card {
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Image within cards */
+.card img {
+  max-height: 200px;
+  object-fit: cover;
+  width: 100%; 
+}
+
+/* Card body styling */
+.card-body {
+  padding: 1rem;
+}
+
+/* Card title styling */
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Card text styling */
+.card-text {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Primary button styling */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .management-container {
+    padding: 1rem;
+  }
+
+  .management-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .management-container {
+    padding: 0.5rem;
+  }
+
+  .management-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* project details style */
+.project-details-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-details-video-container {
+  width: 100%;
+  max-width: 1000px; /* Adjust based on desired width */
+  margin: 0 auto 2rem auto; /* Center the video and add space below */
+  padding: 0; /* Remove any extra padding */
+}
+
+.project-details-video {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+@media (max-width: 1024px) {
+  .project-details-video-container {
+    max-width: 800px; /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .project-details-video-container {
+    max-width: 600px; /* Further adjust for smaller devices */
+  }
+}
+
+@media (max-width: 480px) {
+  .project-details-video-container {
+    max-width: 100%; /* Use full width for very small screens */
+  }
+}
+
+.project-details-info {
+  width: 100%;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+.project-details-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.project-details-images-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 1rem;
+  gap: 20px;
+}
+
+.project-details-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Set fixed dimensions if required */
+.fixed-dimensions .project-details-image {
+  width: 300px; /* Set a fixed width */
+  height: 200px; /* Set a fixed height */
+}
+
+@media (max-width: 1024px) {
+  .project-details-title {
+    font-size: 1.25rem;
+  }
+
+  .project-details-images-container {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .project-details-list-container {
+    padding: 1rem;
+  }
+
+  .project-details-title {
+    font-size: 1.2rem;
+  }
+
+  .project-details-images-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-details-image {
+    max-width: 100%;
+    max-height: auto;
+  }
+
+  .project-details-video-container {
+    height: 300px;
+    margin-top: 0;
+  }
+
+  .project-details-video {
+    height: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-details-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-details-info {
+    padding: 0 0.5rem;
+  }
+
+  .project-details-images-container {
+    gap: 5px;
+  }
+
+  .project-details-image {
+    max-width: 100%;
+    max-height: auto;
+  }
+
+  .project-details-video-container {
+    height: 250px;
+  }
+
+  .project-details-video {
+    height: 100%;
+  }
+}
+
+/* Main container for language switcher in navbar */
+.language-switcher-dropdown {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+/* Dropdown button styling */
+.language-switcher-dropdown .dropdown-toggle {
+  background-color: #fff;  /* Background color */
+  color: #000;  /* Text color */
+  border: 1px solid #000;  /* Border */
+  padding: 8px 16px;  /* Padding for the button */
+  border-radius: 4px;  /* Rounded corners */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for dropdown button */
+.language-switcher-dropdown .dropdown-toggle:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+  border-color: #007bff;
+}
+
+/* Dropdown menu styling */
+.language-switcher-dropdown .dropdown-menu {
+  min-width: 120px;  /* Minimum width of dropdown */
+  border-radius: 4px;  /* Rounded corners for dropdown */
+  border: 1px solid #ddd;  /* Border color for dropdown */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+}
+
+/* Dropdown item styling */
+.language-switcher-dropdown .dropdown-item {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for dropdown items */
+.language-switcher-dropdown .dropdown-item:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Active item styling to indicate current language */
+.language-switcher-dropdown .dropdown-item.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Remove focus outline and unwanted pseudo-elements */
+.language-switcher-dropdown .dropdown-toggle:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.language-switcher-dropdown .dropdown-toggle::before,
+.language-switcher-dropdown .dropdown-toggle::after,
+.language-switcher-dropdown .dropdown-menu::before,
+.language-switcher-dropdown .dropdown-menu::after {
+  content: none;
+}
+
+/* Container for the project list */
+.project-selector-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for each project list item */
+.project-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Highlight selected projects */
+.project-list-item.selected {
+  background-color: #e6f7ff; /* Light blue background */
+  border-color: #1890ff; /* Blue border */
+}
+
+/* Checkbox style */
+.project-list-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Order number style */
+.order-number {
+  font-weight: bold;
+  color: #1890ff;
+  margin-right: 10px;
+  background-color: #d0e7ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Project title style */
+.project-list-item label {
+  display: flex;
+  align-items: center;
+}
+
+/* Hover effect to enhance interactivity */
+.project-list-item:hover {
+  background-color: #f0f5ff;
+  border-color: #40a9ff;
+}
+
+/* Style for the title text */
+.project-list-item label span {
+  font-size: 16px;
+  color: #333;
+}
+
+.project-list-item input[type="checkbox"]:checked + span.order-number {
+  background-color: #28a745; /* Green background for checked projects */
+}
+
+.project-list-item input[type="checkbox"]:not(:checked) + span.order-number {
+  background-color: #6c757d; /* Gray background for unchecked projects */
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure card takes up the full height of its container */
+  max-height: 400px; /* Set a maximum height for the card to keep size consistent */
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 200px; /* Adjust this height as needed */
+}
+
+.card-title {
+  margin-bottom: 1rem; /* Adjust margin as needed */
+}
+
+.card-text {
+  flex: 1; /* Allows the text area to expand and fill available space */
+  overflow: auto; /* Add scrollbars if the text exceeds the card body */
+  margin-bottom: 1rem; /* Adjust margin as needed */
+}
+
+.card-link {
+  margin-top: 1rem; /* Adjust margin as needed */
+}
+
+.language-option {
+  display: inline-block;
+  margin: 0 10px; /* Space between language options */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px; /* Adjust font size as needed */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+}
+
+.language-option:hover {
+  color: #007bff; /* Change text color on hover */
+  text-decoration: underline; /* Underline text on hover */
+  transform: scale(1.1); /* Slightly enlarge text on hover */
+}
+
+.language-option.active {
+  color: #343a40; /* Color for active language option */
+  font-weight: bold; /* Make active language option bold */
+  text-decoration: none; /* Remove underline for active option */
+}
+
+/* ProjectList 2 style */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive columns */
+  gap: 5px;
+  padding: 10px;
+}
+
+.project-tile {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  height: 300px;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+  filter: grayscale(100%);
+}
+
+.project-title-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the title both vertically and horizontally */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  text-shadow: 4px 4px 4px rgba(1, 1, 1, 1); 
+}
+
+.project-tile:hover .project-title-overlay {
+  opacity: 0.8;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust for small screens */
+  }
+
+  .project-tile {
+    height: 200px; /* Adjust height for smaller screens */
+  }
+
+  .project-title-overlay {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .project-tile {
+    height: 150px; /* Adjust height for very small screens */
+  }
+
+  .project-title-overlay {
+    font-size: 0.9rem; /* Adjust font size for very small screens */
+  }
+}
