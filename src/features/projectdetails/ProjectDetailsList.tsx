@@ -43,13 +43,6 @@ const ProjectDetailsList = () => {
           <video src={video} controls className="project-details-video" />
         </div>
       )}
-      <div className="project-details-info">
-        <div className="project-details-title">
-          <h6>{t('location')}: {location}</h6>  {/* Replace static text with translation key */}
-          <h6>{t('year')}: {year}</h6>  {/* Replace static text with translation key */}
-          <h6>{t('status')}: {status}</h6>  {/* Replace static text with translation key */}
-        </div>
-      </div>
       {images.length > 0 && (
         <div className="project-details-images-container">
           <Carousel interval={2500} indicators={false} controls={false}>
@@ -61,6 +54,13 @@ const ProjectDetailsList = () => {
           </Carousel>
         </div>
       )}
+      <div className="project-details-info">
+        <div className="project-details-title">
+          <h6>{t('location')}: {location}</h6>  {/* Replace static text with translation key */}
+          <h6>{t('year')}: {year}</h6>  {/* Replace static text with translation key */}
+          <h6>{t('status')}: {status}</h6>  {/* Replace static text with translation key */}
+        </div>
+      </div>
     </div>
   );
 };

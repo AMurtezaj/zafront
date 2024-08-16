@@ -26,89 +26,107 @@ html, body {
   .project-carousel {
     position: relative;
     width: 100%;
-    height: calc(100vh - 80px); /* Full screen height minus the navbar */
+    height: calc(100vh - 80px);
     overflow: hidden;
-    transform: 0.3s ease;
-}
-
-.project-slide {
+  }
+  
+  .project-slide {
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: flex-end;
-    justify-content: center;
-    animation: zoomOut 4.5s ease-in-out infinite; /* Apply zoom-out animation */
-}
-
-/* Ensuring the image scales properly on different screen sizes */
-@media (max-width: 768px) {
-    .project-carousel {
-        height: calc(50vh - 80px); /* Adjust height for smaller screens */
-    }
-
-    .project-slide {
-        animation: zoomOutMobile 4.5s ease-in-out infinite;
-    }
-
-    @keyframes zoomOutMobile {
-        0% {
-            transform: scale(1);
-        }
-        100% {
-            transform: scale(1.05); /* Slightly smaller zoom-out for mobile */
-        }
-    }
-}
-
-@keyframes zoomOut {
+    justify-content: flex-start;
+    padding: 20px;
+    animation: zoomAnimation 4s ease-in-out infinite;
+  }
+  
+  @keyframes zoomAnimation {
     0% {
-        transform: scale(1); /* Start at normal size */
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1); /* Slight zoom in */
     }
     100% {
-        transform: scale(1.1); /* Zoom out to 1.1 times the original size */
+      transform: scale(1);
     }
-}
-
-.project-title {
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    margin-bottom: 20px; 
-    position: relative;
-    z-index: 2;
-}
-
-.carousel-dots {
+  }
+  
+  .project-info {
     position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .project-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .carousel-dots {
+    display: flex;
     gap: 10px;
-}
-
-.dot {
+  }
+  
+  .dot {
     width: 10px;
     height: 10px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
-}
-
-.dot.active {
-    background-color: black;
-}
-
-/* Adjust dots for smaller screens */
-@media (max-width: 768px) {
-    .dot {
-        width: 8px;
-        height: 8px;
+  }
+  
+  .dot.active {
+    background-color: white;
+  }
+  .title {
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .project-carousel {
+      height: calc(100vh - 60px);
     }
-}
+
+    .title {
+      color: white;
+    }
+  
+    .project-slide {
+      align-items: flex-start;
+      padding: 60px 20px 20px;
+    }
+  
+    .project-info {
+      bottom: 10px;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .project-title {
+      font-size: 20px;
+    }
+  
+    .carousel-dots {
+      bottom: 10px;
+    }
+  
+    .dot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+  
+  
 
   /* General Navbar Styles */
 .navbar {
@@ -541,21 +559,24 @@ html, body {
     margin-top: 2rem;
   }
   
-  /* About Us Styles */
-  .about-us-section {
-    background-color: white;
-    padding: 5rem 0;
-  }
-  
-  .about-us-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .about-us-section p {
-    font-size: 1rem;
-    color: #6c757d;
-  }
+ /* About Us Styles */.about-us-section {
+  background-color: white;
+  padding: 5rem0;
+}
+
+.about-us-sectionh2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-us-sectionp {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.img-fluid office-image {
+  width: 100%; /* Set width to 100% of the parent container /height: auto; / Maintain aspect ratio /max-width: 600px; / Optionally set a maximum width /border-radius: 8px; / Optional: Add border-radius for rounded corners /object-fit: cover; / Ensure the image covers the area without distortion */
+}
   
   /* Media Queries for Responsiveness */
   @media (max-width: 768px) {
@@ -580,44 +601,6 @@ html, body {
       width: 100%;
     }
   
-    .project-carousel {
-      height: 300px; /* Adjust carousel height for smaller screens */
-    }
-  
-    .project-title {
-      font-size: 1rem;
-      margin-bottom: 20px; 
-    }
-  
-    .about-company-section,
-    .about-us-section {
-      padding: 2rem 1rem;
-    }
-  
-    .about-company-section h2,
-    .about-us-section h2 {
-      font-size: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .navbar {
-      padding: 0.5rem 0.5rem;
-    }
-  
-    .navbar-toggler {
-      margin-right: 1rem;
-    }
-  
-    .project-carousel {
-      height: 200px; /* Adjust carousel height for smaller screens */
-    }
-  
-    .project-title {
-      font-size: 0.10rem;
-      padding: 5px 10px;
-      margin-bottom: 20px; /* Space above the dots for smaller screens */
-    }
   
     .about-company-section,
     .about-us-section {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';  // Import the useTranslation hook
-import '../../App.css';
+import '../../App1.css';
 import TeamMemberList from '../teammember/TeamMemberList';
 
 const AboutUs = () => {

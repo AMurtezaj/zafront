@@ -157,12 +157,9 @@ export default class ProjectStore {
   loadSelectedProjects = async () => {
     try {
       const selectedProjects = await agent.Projects.getSelected();
-      console.log("API Response for selected projects:", selectedProjects);
       runInAction(() => {
         this.selectedProjects = selectedProjects ?? []; // Handle undefined cases
       });
-      console.log('OKAYYY', selectedProjects);
-      
       return selectedProjects;
     } catch (error) {
       console.error("Error loading selected projects:", error);
