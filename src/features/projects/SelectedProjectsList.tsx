@@ -123,7 +123,7 @@ const SelectedProjectList = () => {
         onClick={() => handleProjectClick(displayProject.$values[currentIndex].id)}
       ></div>
       <div className="project-info">
-        <h5 className="title">{displayProject.$values[currentIndex].title}</h5>
+        <h6 className="title">{displayProject.$values[currentIndex].title}</h6>
         <div className="carousel-dots">
           {displayProject.$values.map((_: any, index: number) => (
             <span
