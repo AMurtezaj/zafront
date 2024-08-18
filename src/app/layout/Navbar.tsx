@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../stores/store';
 import { FiX } from 'react-icons/fi';
-import '../../App.css';
+import '../../App1.css';
 import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
