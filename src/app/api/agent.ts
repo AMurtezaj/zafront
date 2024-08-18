@@ -18,7 +18,7 @@ const sleep = (delay: number) => {
   });
 }
 
-axios.defaults.baseURL = 'https://localhost:7009/api';
+axios.defaults.baseURL = 'https://98.81.111.84:5143/api';
 
 const token = localStorage.getItem("jwt");
 if (token) {
