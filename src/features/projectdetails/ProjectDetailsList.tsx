@@ -26,6 +26,8 @@ const ProjectDetailsList = () => {
     return () => clearInterval(interval);
   }, [selectedProjectDetails]);
 
+  
+
   if (loadingInitial) return <div>{t('loading')}</div>;
   if (error) return <div>{t('error_message', { error })}</div>;
   if (!selectedProjectDetails) return <div>{t('no_project_details')}</div>;
