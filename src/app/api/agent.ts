@@ -18,7 +18,8 @@ const sleep = (delay: number) => {
   });
 }
 
-axios.defaults.baseURL = 'http://98.81.111.84:5143/api';
+//  axios.defaults.baseURL = 'http://98.81.111.84:5143/api';
+axios.defaults.baseURL = 'https://localhost:7009/api';
 
 const token = localStorage.getItem("jwt");
 if (token) {
@@ -99,9 +100,9 @@ const Projects = {
 };
 
 const ProjectDetailsAPI = {
-  getAll: () => requests.get<{result: ProjectDetails[]}>('/VideoUpload').then(data => data.result),
-  getById: (id: string) => requests.get<ProjectDetails>(`/videoupload/${id}`),
-  create: (formData: FormData): Promise<void> => axios.post('/videoupload', formData, {
+  getAll: () => requests.get<{result: ProjectDetails[]}>('/ProjectDetails').then(data => data.result),
+  getById: (id: string) => requests.get<ProjectDetails>(`/ProjectDetails/${id}`),
+  create: (formData: FormData): Promise<void> => axios.post('/ProjectDetails', formData, {
       headers: {
           'Content-Type': 'multipart/form-data'
       }
@@ -111,9 +112,9 @@ const ProjectDetailsAPI = {
           'Content-Type': 'multipart/form-data'
       }
   }).then(responseBody), */
-  update: (projectdetails: FormData) => requests.put<void>(`/VideoUpload/${projectdetails.get('id')}`, projectdetails),
+  update: (projectdetails: FormData) => requests.put<void>(`/ProjectDetails/${projectdetails.get('id')}`, projectdetails),
   //delete: (id: string): Promise<void> => requests.del(`/videoupload/${id}`)
-  delete: (id: string) => requests.del<void>(`/VideoUpload/${id}`)
+  delete: (id: string) => requests.del<void>(`/ProjectDetails/${id}`)
 };
 
 const NewsApi = {
