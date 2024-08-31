@@ -92,8 +92,9 @@ const ProjectDetailsForm: React.FC<{ projectDetails?: ProjectDetails }> = ({ pro
         formData.append('year', formValues.year);
         formData.append('status', formValues.status);
         formData.append('projectId', formValues.projectId);
+        formData.append('ProjectId', projectDetailsStore.projects.find(project => project.id === formValues.projectId)?.title || '');
 
-        const response = await axios.post('/videoupload/upload', formData, {
+        const response = await axios.post('/projectdetails/upload', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
