@@ -25,5 +25,11 @@
   "news": "Nachrichten",
   "read_more": "Mehr lesen",
   "location_germany": "Deutschland",
-  "projects": "Projekte"
+  "projects": "Projekte",
+  "team_member_position_CEO": "Geschäftsführer",
+  "team_member_position_CTO": "Technischer Leiter",
+  "team_member_position_Designer": "Designer",
+  "team_member_title_Architect": "Architekt",
+  "team_member_title_SoftwareEngineer": "Softwareingenieur",
+  "team_member_title_GraphicDesigner": "Grafikdesigner"
 }

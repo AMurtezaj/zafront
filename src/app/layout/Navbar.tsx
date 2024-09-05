@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '../stores/store';
@@ -9,9 +9,10 @@ import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const [navActive, setNavActive] = useState(false);
-  const [language, setLanguage] = useState('en'); // State for managing language
+  const [language, setLanguage] = useState('en');
   const { authenticationStore } = useStore();
   const navigate = useNavigate();
+  const location = useLocation();
   const { i18n } = useTranslation();
 
   const toggleNav = () => {
@@ -28,17 +29,24 @@ const Navbar = () => {
     navigate('/admin/login');
   };
 
-  const handleSmoothScroll = (e: any, id: any) => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+    
+    if (location.pathname !== '/') {
+      // If not on the main page, navigate to the main page first
+      navigate('/', { state: { scrollTo: id } });
+    } else {
+      // If already on the main page, scroll to the section
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     closeMenu();
   };
 
   const handleLogoClick = () => {
-    window.location.href = '/';
+    navigate('/');
   };
 
   useEffect(() => {
@@ -60,6 +68,18 @@ const Navbar = () => {
       closeMenu();
     }
   }, []);
+
+  useEffect(() => {
+    if (location.pathname === '/' && location.state && location.state.scrollTo) {
+      const target = document.getElementById(location.state.scrollTo as string);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+      navigate('/', { replace: true, state: {} });
+    }
+  }, [location, navigate]);
 
   const handleLanguageChange = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -104,34 +124,21 @@ const Navbar = () => {
                   <li className="nav-item">
                     <Link onClick={closeMenu} className="nav-link" to="/admin/dashboard">Admin Dashboard</Link>
                   </li>
-                  {/* <li className="nav-item">
-                    <Link onClick={closeMenu} className="nav-link" to="/admin/manage-projects">Manage Projects</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link onClick={closeMenu} className="nav-link" to="/admin/manage-project-details">Manage Project Details</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link onClick={closeMenu} className="nav-link" to="/admin/manage-news">Manage News</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link onClick={closeMenu} className="nav-link" to="/admin/manage-team-members">Manage Team Members</Link>
-                  </li> */}
                   <li className="nav-item">
                     <button onClick={handleLogout} className="btn btn-link nav-link">Logout</button>
                   </li>
                 </>
               )}
-              
             </ul>
           </div>
           <li className="nav-item">
-                {language === 'en' && (
-                  <span className="language-option" onClick={() => handleLanguageChange('de')}>DE</span>
-                )}
-                {language === 'de' && (
-                  <span className="language-option" onClick={() => handleLanguageChange('en')}>EN</span>
-                )}
-              </li>
+            {language === 'en' && (
+              <span className="language-option" onClick={() => handleLanguageChange('de')}>DE</span>
+            )}
+            {language === 'de' && (
+              <span className="language-option" onClick={() => handleLanguageChange('en')}>EN</span>
+            )}
+          </li>
         </div>
       </div>
     </nav>

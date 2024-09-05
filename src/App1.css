@@ -23,7 +23,7 @@ html, body {
     background-color: white;
   }
   
-  .project-carousel {
+  /* .project-carousel {
     position: relative;
     width: 100%;
     height: calc(100vh - 50px);
@@ -100,6 +100,110 @@ html, body {
       height: calc(100vh - 20px);
     }
 
+    .title {
+      color: white;
+    }
+  
+    .project-slide {
+      align-items: flex-start;
+      padding: 60px 20px 20px;
+    }
+  
+    .project-info {
+      bottom: 10px;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .project-title {
+      font-size: 20px;
+    }
+  
+    .carousel-dots {
+      bottom: 10px;
+    }
+  
+    .dot {
+      width: 8px;
+      height: 8px;
+    }
+  } */
+
+  .project-carousel {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+  }
+  
+  .project-slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 20px;
+    animation: zoomInAnimation 5s ease-out forwards;
+  }
+  
+  @keyframes zoomInAnimation {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .project-info {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  
+  .project-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: white;
+  }
+  
+  .title {
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .project-carousel {
+      height: calc(100vh - 20px);
+    }
+  
     .title {
       color: white;
     }

@@ -25,5 +25,11 @@
   "news": "News",
   "read_more": "Read More",
   "location_germany": "Germany",
-  "projects": "Projects"
+  "projects": "Projects",
+  "team_member_position_CEO": "CEO",
+    "team_member_position_CTO": "CTO",
+    "team_member_position_Designer": "Designer",
+    "team_member_title_Architect": "Architect",
+    "team_member_title_SoftwareEngineer": "Software Engineer",
+    "team_member_title_GraphicDesigner": "Graphic Designer"
 }
