@@ -12,7 +12,7 @@ const AddTheTeamMember: React.FC = () => {
   const navigate = useNavigate();
   const [file, setFile] = useState<File | null>(null);
 
-  const initialValues: TeamMember = { id: 0, name: '', title: '', position: '', image: '' };
+  const initialValues: TeamMember = { id: '', name: '', title: '', position: '', image: '' };
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),

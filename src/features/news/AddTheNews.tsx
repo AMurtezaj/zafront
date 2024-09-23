@@ -12,7 +12,7 @@ const AddTheNews: React.FC = () => {
   const navigate = useNavigate();
   const [file, setFile] = useState<File | null>(null);
 
-  const initialValues: News = { id: 0, title: '', description: '', image: '', link: '' }; // Initialize link property
+  const initialValues: News = { id: '', title: '', description: '', image: '', link: '' }; // Initialize link property
 
   const validationSchema = Yup.object({
     title: Yup.string().required('Title is required'),

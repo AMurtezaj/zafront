@@ -100,11 +100,15 @@ const EditProject: React.FC = () => {
               <div className="mb-4">
                 <label htmlFor="Selected" className="label">Mark as Selected</label>
                 <Field
-                  type="checkbox"
+                  as="select"
                   id="Selected"
                   name="Selected"
-                  className="input-checkbox"
-                />
+                  className="input-field"
+                >
+                  <option value="false">NO</option>
+                  <option value="true">YES</option>
+                </Field>
+                <ErrorMessage name="Selected" component="div" className="error-message" />
               </div>
               <div className="flex justify-end space-x-4">
                 <button

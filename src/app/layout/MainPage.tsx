@@ -5,10 +5,14 @@ import ContactUs from './ContactUs';
 import AboutCompany from '../../features/AboutCompanyUs/AboutCompany';
 import ProjectList2 from '../../features/projects/ProjectList2';
 import SelectedProjectList from '../../features/projects/SelectedProjectsList';
+import DevelopmentBanner from './DevelopmentBanner';
 
 const MainPage = () => {
   return (
     <div>
+      {/* <section id="development">
+        <DevelopmentBanner />
+      </section> */}
       <section id="projects">
         <SelectedProjectList />
       </section>

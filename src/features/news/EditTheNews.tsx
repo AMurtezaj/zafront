@@ -16,7 +16,7 @@ const EditTheNews = () => {
 
   useEffect(() => {
     if (id) {
-      loadNewsItem(parseInt(id));
+      loadNewsItem(id);
     }
   }, [id, loadNewsItem]);
 

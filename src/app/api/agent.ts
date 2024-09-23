@@ -119,18 +119,18 @@ const ProjectDetailsAPI = {
 
 const NewsApi = {
   getAll: () => requests.get<{ result: News[] }>('/News').then(data => data.result),
-  getById: (id: number) => requests.get<News>(`/News/${id}`),
+  getById: (id: string) => requests.get<News>(`/News/${id}`),
   create: (news: FormData) => requests.post<void>('/News', news),
   update: (news: FormData) => axios.put<void>(`/News/${news.get('id')}`, news), 
-  delete: (id: number) => requests.del<void>(`/News/${id}`)
+  delete: (id: string) => requests.del<void>(`/News/${id}`)
 };
 
 const TeamMembers = {
   getAll: () => requests.get<{ result: TeamMember[] }>('/TeamMember').then(data => data.result),
-  getById: (id: number) => requests.get<TeamMember>(`/TeamMember/${id}`),
+  getById: (id: string) => requests.get<TeamMember>(`/TeamMember/${id}`),
   create: (teamMember: FormData) => requests.post<void>('/TeamMember', teamMember),
   update: (teamMember: FormData) => axios.put<void>(`/TeamMember/${teamMember.get('id')}`, teamMember),
-  delete: (id: number) => requests.del<void>(`/TeamMember/${id}`)
+  delete: (id: string) => requests.del<void>(`/TeamMember/${id}`)
 };
 
 const Authentication = {
